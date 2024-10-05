@@ -137,6 +137,10 @@ namespace Les6ON
                         arr[tmp] = matrix[i,j];
                         tmp++;
                     }
+                    else if (i == rows - 1)
+                    {
+                        Console.WriteLine(matrix[i,j]);
+                    }
                                                               
                 }
             }
