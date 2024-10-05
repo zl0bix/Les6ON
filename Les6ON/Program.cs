@@ -12,7 +12,7 @@ namespace Les6ON
     {
         static void Main(string[] args)
         {
-            /* Убрать!
+            // Убрать!
 
             Console.Write("\tВведите строку: ");
             string str = Console.ReadLine();
@@ -67,7 +67,7 @@ namespace Les6ON
                     tmp++;
                     if(i == arrCh1.Length - 2)
                     {
-                        str = str + tmp;
+                        str += tmp;
                         str += arrCh1[i];
                     }
                     //arrCh2[i] = arrCh1[i];
@@ -76,7 +76,7 @@ namespace Les6ON
                 {
                     if (tmp != 1)
                     {
-                        str = str + tmp;
+                        str += tmp;
                         str += arrCh1[i];
                         tmp = 1;
                     }
@@ -92,8 +92,8 @@ namespace Les6ON
             Console.Write("\tИтоговая строка: " + str);
             Console.WriteLine("\n\n\n\n\n");
 
-            убрать!
-            */
+            //убрать!
+            
 
             /*
              Задача #2 Дана матрица целых чисел int[,] matrix размером MхN. Вернуть все её элементы,
@@ -115,18 +115,18 @@ namespace Les6ON
             //   { 7,  8,  9 },
             //   { 10, 11, 12 }          
             // };
-            int tmp = 1;
+            int tmp1 = 1;
             for (int i = 0; i < matrix.GetLength(0); i++)
             {
                 for (int j = 0; j < matrix.GetLength(1); j++)
                 {
-                    matrix[i, j] = tmp++;
+                    matrix[i, j] = tmp1++;
                     Console.Write(matrix[i, j] + "\t");
                 }
                 Console.WriteLine();
             }
             Console.WriteLine();
-            tmp = 0;
+            tmp1 = 0;
             for(int i = 0; i < rows; i++)
             {
                 for(int j = 0;j < cols; j++)
@@ -134,12 +134,14 @@ namespace Les6ON
                     if (j == 0 )
                     {
                         Console.WriteLine(matrix[i,j]);
-                        arr[tmp] = matrix[i,j];
-                        tmp++;
+                        arr[tmp1] = matrix[i,j];
+                        tmp1++;
                     }
                     else if (i == rows - 1)
                     {
                         Console.WriteLine(matrix[i,j]);
+                        arr[tmp1] = matrix[i, j];
+                        tmp1++;
                     }
                                                               
                 }
