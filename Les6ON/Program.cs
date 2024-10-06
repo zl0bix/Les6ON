@@ -93,7 +93,7 @@ namespace Les6ON
             Console.WriteLine("\n\n\n\n\n");
 
             //убрать!
-            
+
 
             /*
              Задача #2 Дана матрица целых чисел int[,] matrix размером MхN. Вернуть все её элементы,
@@ -103,55 +103,54 @@ namespace Les6ON
             Пример 2: Входной параметр: int[,] matrix = new int[3,4]{{1,2,3,4},{5,6,7,8},{9,10,11,12}};
             Результирующий массив: [1,5,9,10,11,12,8,4,3,2,6,7]
              */
-            const int rows = 4;
-            
-            const int cols = 3;
-                        
-            int[,] matrix = new int[rows, cols];
-            int[] arr = new int[rows*cols];
-            //{ 
-            //   { 1,  2,  3 },
-            //   { 4,  5,  6 },
-            //   { 7,  8,  9 },
-            //   { 10, 11, 12 }          
-            // };
-            int tmp1 = 1;
+
+            const int n = 6;
+            const int m = 8;
+            int[,] matrix = new int[n, m];
+
+            int row = 0;
+            int col = 0;
+            int dx = 1;
+            int dy = 0;
+            int dirChanges = 0;
+            int visits = m;
+            Console.WriteLine();
             for (int i = 0; i < matrix.GetLength(0); i++)
             {
                 for (int j = 0; j < matrix.GetLength(1); j++)
                 {
-                    matrix[i, j] = tmp1++;
                     Console.Write(matrix[i, j] + "\t");
                 }
                 Console.WriteLine();
             }
-            Console.WriteLine();
-            tmp1 = 0;
-            for(int i = 0; i < rows; i++)
-            {
-                for(int j = 0;j < cols; j++)
-                {
-                    if (j == 0 )
-                    {
-                        Console.WriteLine(matrix[i,j]);
-                        arr[tmp1] = matrix[i,j];
-                        tmp1++;
-                    }
-                    else if (i == rows - 1)
-                    {
-                        Console.WriteLine(matrix[i,j]);
-                        arr[tmp1] = matrix[i, j];
-                        tmp1++;
-                    }
-                                                              
-                }
-            }
-            Console.WriteLine();
-            Console.Write(matrix[0,0]+" " + matrix[1,0]+ " " + matrix[2,0]+ " " + matrix[3,0]
-                + " " + matrix[3,1]+ " "+ matrix[3,2] + " "+ matrix[2,2]+ " "+ matrix[1,2]+ " "+ matrix[0,2] +
-                " "+ matrix[0,1]);
 
             Console.WriteLine();
+
+            for (int i = 0; i < matrix.Length; i++)
+            {
+                matrix[row, col] = i + 1;
+                if (--visits == 0)
+                {
+                    visits = m * (dirChanges % 2) + n * ((dirChanges + 1) % 2) - (dirChanges / 2 - 1) - 2;
+                    int temp = dx;
+                    dx = -dy;
+                    dy = temp;
+                    dirChanges++;
+                }
+
+                col += dx;
+                row += dy;
+            }
+            Console.WriteLine();
+
+            for (int i = 0; i < matrix.GetLength(0); i++)
+            {
+                for (int j = 0; j < matrix.GetLength(1); j++)
+                {
+                    Console.Write(matrix[i, j] + "\t");
+                }
+                Console.WriteLine();
+            }
 
         }
     }
